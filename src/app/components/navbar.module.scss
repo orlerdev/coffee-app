@@ -1,0 +1,28 @@
+.navbar {
+	height: 80px;
+	width: 100%;
+	padding: 5px 20px;
+	background-color: grey;
+	font-size: x-large;
+}
+
+.navUL {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	height: 100%;
+	width: 100%;
+	column-gap: 20px;
+}
+
+.avatar {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	border-radius: 9999px;
+	background: url("/public/user-pic.jpg");
+	background-size: contain;
+	background-position: top;
+	background-repeat: no-repeat;
+}
