@@ -9,6 +9,7 @@ export default function Navbar() {
 	const { logout } = useLogout();
 	return (
 		<nav className={s.navbar}>
+			{/* if logged in redirect to profile */}
 			<div className={s.avatar}>
 				<Link href="/dashboard">
 					<Image
