@@ -1,0 +1,72 @@
+.dashWrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding: 4rem;
+	margin-top: 80px;
+	column-gap: 40px;
+	color: #fff;
+	font-weight: 100;
+}
+
+.statsWrap {
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	flex: 1;
+	height: 100%;
+	width: 100%;
+	border-radius: 1rem 0 0 1rem;
+	background: var(--content-bg);
+	box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(3px);
+}
+
+.statsUL {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+	row-gap: 4em;
+}
+
+.statsLI {
+	font-weight: 400;
+}
+
+.dataWrap {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	font-size: 1.3em;
+	row-gap: 5px;
+}
+
+.stats {
+	display: block;
+	text-align: center;
+	font-size: 0.9em;
+}
+
+.statsTitle,
+.faveTitle {
+	align-self: center;
+	font-size: 2em;
+}
+
+.faveWrap {
+	display: flex;
+	flex: 4;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding: 15px;
+	border-radius: 0 1rem 1rem 0;
+	background: var(--content-bg);
+	box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(3px);
+	row-gap: 20px;
+}

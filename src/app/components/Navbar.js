@@ -1,26 +1,35 @@
+"use client";
+
 import s from "./navbar.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { useLogout } from "~/hooks/useLogout";
 
 export default function Navbar() {
+	const { logout } = useLogout();
 	return (
 		<nav className={s.navbar}>
-			<ul className={s.navUL}>
-				<li className={s.avatar}>
+			<div className={s.avatar}>
+				<Link href="/dashboard">
 					<Image
-						src='/user-pic.jpg'
-						alt='user profile pic'
-						height={100}
-						width={100}
+						src="/user-pic.jpg"
+						alt="user profile pic"
+						fill
+						style={{ objectFit: "cover", objectPosition: "top" }}
 					/>
-					<span>Coffee 4 Coding</span>
+				</Link>
+			</div>
+			<div className={s.coName}>Coffee 4 Coding</div>
+			<ul className={s.navUL}>
+				<li>
+					<Link href="/login">Login</Link>
 				</li>
 				<li>
-					<Link href='@/login'>Login</Link>
+					<Link href="/signup">Signup</Link>
 				</li>
-				<li>
-					<Link href='@/signup'>Signup</Link>
-				</li>
+				<button className={s.btn} onClick={logout}>
+					Logout
+				</button>
 			</ul>
 		</nav>
 	);

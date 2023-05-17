@@ -6,11 +6,11 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 export const useSignup = () => {
 	const [error, setError] = useState(null);
 
-	const signup = (email, password) => {
+	const signup = async (email, password) => {
 		setError(null);
 		createUserWithEmailAndPassword(auth, email, password);
 		try {
-			res => {
+			const res = () => {
 				console.log("User signed up:", res.user);
 			};
 		} catch (e) {

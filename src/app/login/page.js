@@ -1,12 +1,18 @@
 "use client";
 import { useState } from "react";
 import s from "./userLoginPage.module.scss";
+import { useLogin } from "~/hooks/useLogin";
+
 export default function UserLoginPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { error, login } = useLogin();
+
 	const handleSubmit = e => {
 		e.preventDefault();
 		console.log(email, password);
+		console.log("User logged in");
+		login(email, password);
 	};
 
 	return (
