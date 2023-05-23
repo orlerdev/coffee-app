@@ -1,14 +1,13 @@
 .dashWrap {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	height: 100%;
-	width: 100%;
-	padding: 4rem;
-	margin-top: 80px;
+	height: 100vh;
+	width: 100vw;
+	padding: 100px 20px 20px 20px;
 	column-gap: 40px;
 	color: #fff;
 	font-weight: 100;
+	overflow: hidden;
 }
 
 .statsWrap {
@@ -17,11 +16,11 @@
 	padding: 15px;
 	flex: 1;
 	height: 100%;
-	width: 100%;
-	border-radius: 1rem 0 0 1rem;
+	width: 360px;
+	//border-radius: 1rem 0 0 1rem;
 	background: var(--content-bg);
 	box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
-	backdrop-filter: blur(3px);
+	backdrop-filter: blur(10px);
 }
 
 .statsUL {
@@ -64,9 +63,9 @@
 	height: 100%;
 	width: 100%;
 	padding: 15px;
-	border-radius: 0 1rem 1rem 0;
+	//border-radius: 0 1rem 1rem 0;
 	background: var(--content-bg);
 	box-shadow: 0px 6px 30px rgba(53, 53, 53, 0.4);
-	backdrop-filter: blur(3px);
+	backdrop-filter: blur(10px);
 	row-gap: 20px;
 }

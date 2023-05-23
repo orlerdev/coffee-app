@@ -1,6 +1,6 @@
-import "s/globals.css";
-import "s/reset.css";
-import "s/layout.css";
+import "@/styles/globals.css";
+import "@/styles/reset.css";
+import "@/styles/layout.css";
 import s from "./layout.module.scss";
 import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";

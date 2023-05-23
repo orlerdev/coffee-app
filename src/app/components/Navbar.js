@@ -3,7 +3,7 @@
 import s from "./navbar.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { useLogout } from "~/hooks/useLogout";
+import { useLogout } from "../../hooks/useLogout";
 
 export default function Navbar() {
 	const { logout } = useLogout();
@@ -20,13 +20,16 @@ export default function Navbar() {
 					/>
 				</Link>
 			</div>
-			<div className={s.coName}>Coffee 4 Coding</div>
+			<div className={s.coName}>
+				<Link href={"/"}>Coffee 4 Coding</Link>
+			</div>
+
 			<ul className={s.navUL}>
 				<li>
-					<Link href="/login">Login</Link>
+					<Link href="@/login">Login</Link>
 				</li>
 				<li>
-					<Link href="/signup">Signup</Link>
+					<Link href="@/signup">Signup</Link>
 				</li>
 				<button className={s.btn} onClick={logout}>
 					Logout

@@ -2,5 +2,10 @@
 	background: var(--border-color);
 	height: 200px;
 	width: 300px;
-	box-shadow: 0 0 25px rgba(34, 34, 34, 0.959);
+	box-shadow: 0 0 20px rgba(34, 34, 34, 0.959);
+	background: url("../../../public/images/neon_coffee.jpg");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
 }
+ 
