@@ -2,8 +2,11 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"~*": ["./*"],
-			"@/*": ["./src/app/*"]
+			"@/*": ["./src/app/*"],
+			"@/hooks/*": ["./src/hooks/*"],
+			"@/firebase/*": ["./src/firebase/*"],
+			"@/context/*": ["./src/context/*"],
+			"@/lib/*": ["./src/lib/*"]
 		}
 	}
 }

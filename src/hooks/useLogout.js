@@ -1,5 +1,4 @@
-import { auth } from "../firebase/config";
-import { signOut } from "../firebase/config";
+import { auth, signOut } from "@/firebase/config";
 
 export const useLogout = () => {
 	const logout = () => {

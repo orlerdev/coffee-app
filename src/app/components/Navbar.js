@@ -1,12 +1,16 @@
 "use client";
-
-import s from "./navbar.module.scss";
+import { useState } from "react";
+import { useLogout } from "@/hooks/useLogout";
 import Link from "next/link";
 import Image from "next/image";
-import { useLogout } from "../../hooks/useLogout";
+import s from "./navbar.module.scss";
 
 export default function Navbar() {
-	const { logout } = useLogout();
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [showForm, setShowForm] = useState(false);
+
+	const Toggle = () => setShowForm(!showForm);
+
 	return (
 		<nav className={s.navbar}>
 			{/* if logged in redirect to profile */}
@@ -26,11 +30,12 @@ export default function Navbar() {
 
 			<ul className={s.navUL}>
 				<li>
-					<Link href="@/login">Login</Link>
+					<Link href="/login">Login</Link>
 				</li>
-				<li>
-					<Link href="@/signup">Signup</Link>
-				</li>
+				{/* <Link href="/signup">Signup</Link> */}
+				<button className={s.btn} onClick={() => Toggle()}>
+					Signup
+				</button>
 				<button className={s.btn} onClick={logout}>
 					Logout
 				</button>

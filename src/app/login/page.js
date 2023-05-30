@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import s from "./userLoginPage.module.scss";
-import { useLogin } from "~/hooks/useLogin";
+import { useLogin } from "@/hooks/useLogin";
 
 export default function UserLoginPage() {
 	const [email, setEmail] = useState("");
@@ -22,7 +22,7 @@ export default function UserLoginPage() {
 				<span className={s.span}>Email:</span>
 				<input
 					className={s.input}
-					type='email'
+					type="email"
 					onChange={e => setEmail(e.target.value)}
 					value={email}
 				/>
@@ -31,7 +31,7 @@ export default function UserLoginPage() {
 				<span className={s.span}>Password:</span>
 				<input
 					className={s.input}
-					type='password'
+					type="password"
 					onChange={e => setPassword(e.target.value)}
 					value={password}
 				/>
