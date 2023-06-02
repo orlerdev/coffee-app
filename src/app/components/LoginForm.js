@@ -71,7 +71,7 @@ export default function Login() {
 	};
 
 	return (
-		<>
+		<div>
 			<Overlay></Overlay>
 			<Form onSubmit={handleSubmit}>
 				<Title>Login</Title>
@@ -95,6 +95,6 @@ export default function Login() {
 				</Label>
 				<Btn>Login</Btn>
 			</Form>
-		</>
+		</div>
 	);
 }

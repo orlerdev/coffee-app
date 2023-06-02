@@ -16,16 +16,8 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={inter.className}>
 				<StyledComponentsRegistry>
-					<div className={s.pageWrap}>
-						<div className={s.container}>
-							<div className={s.row}>
-								<div className={s.column}>
-									<Navbar />
-									{children}
-								</div>
-							</div>
-						</div>
-					</div>
+					<Navbar />
+					{children}
 				</StyledComponentsRegistry>
 			</body>
 		</html>

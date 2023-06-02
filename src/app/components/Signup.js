@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useSignup } from "@/hooks/useSignup";
 import Link from "next/link";
-import s from "./signup.module.scss";
 import styled from "styled-components";
 
 export default function Signup() {

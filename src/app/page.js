@@ -1,9 +1,9 @@
 "use client";
 import styled from "styled-components";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase/config";
-import { useEffect, useState } from "react";
 import CoffeeContainer from "@/components/CoffeeContainer";
+import CoffeeForm from "@/components/CoffeeForm";
+import LoginForm from "@/components/LoginForm";
+import { useCollection } from "@/hooks/useCollection";
 
 const PageWrap = styled.div`
 	min-height: 100vh;
@@ -29,28 +29,9 @@ const Column = styled.div`
 	flex: 1 0 0;
 `;
 const Main = styled.main``;
-const Error = styled.p``;
-const Pending = styled.p``;
-const Data = styled.div``;
 
 export default function Home() {
-	const [data, setData] = useState(null);
-	const [isPending, setIsPending] = useState(false);
-	const [error, setError] = useState(false);
-	const [coffees, setCoffees] = useState(null);
-
-	useEffect(() => {
-		setIsPending(true);
-		const ref = collection(db, "coffees");
-
-		getDocs(ref).then(snapshot => {
-			snapshot.docs.forEach(doc => {
-				let results = [];
-				results.push({ id: doc.id, ...doc.data() });
-			});
-			setCoffees(results);
-		});
-	}, []);
+	const { documents: coffees } = useCollection("coffees");
 
 	return;
 	<PageWrap>
@@ -58,8 +39,11 @@ export default function Home() {
 			<Row>
 				<Column>
 					<Main>
-						<CoffeeContainer />
+						<LoginForm />
+						{coffees && <CoffeeContainer coffees={coffees} />}
+						<CoffeeForm />
 					</Main>
+					;
 				</Column>
 			</Row>
 		</Container>

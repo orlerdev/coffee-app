@@ -1,7 +1,6 @@
 "use client";
 import s from "@/dashboard/dashboard.module.scss";
 import styled from "styled-components";
-import CoffeeContainer from "./CoffeeContainer";
 
 export default function Dashboard() {
 	return (
@@ -33,7 +32,6 @@ export default function Dashboard() {
 			</div>
 			<div className={s.faveWrap}>
 				<h2 className={s.faveTitle}>Favorites</h2>
-				<CoffeeContainer />
 			</div>
 		</div>
 	);
