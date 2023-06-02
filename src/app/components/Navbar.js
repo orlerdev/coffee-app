@@ -7,9 +7,6 @@ import s from "./navbar.module.scss";
 
 export default function Navbar() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [showForm, setShowForm] = useState(false);
-
-	const Toggle = () => setShowForm(!showForm);
 
 	return (
 		<nav className={s.navbar}>
@@ -33,12 +30,8 @@ export default function Navbar() {
 					<Link href="/login">Login</Link>
 				</li>
 				{/* <Link href="/signup">Signup</Link> */}
-				<button className={s.btn} onClick={() => Toggle()}>
-					Signup
-				</button>
-				<button className={s.btn} onClick={logout}>
-					Logout
-				</button>
+				<button className={s.btn}>Signup</button>
+				<button className={s.btn}>Logout</button>
 			</ul>
 		</nav>
 	);

@@ -7,18 +7,27 @@ import s from "./signup.module.scss";
 import styled from "styled-components";
 
 export default function Signup() {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 	const [username, setUsername] = useState("");
-	const [showForm, setShowForm] = useState(false);
+	const [email, setEmail] = useState("");
+	const [initialPassword, setInitialPassword] = useState("");
+	const [password, setPassword] = useState("");
 	const { error, isPending, signup } = useSignup();
-
-	const Toggle = () => setShowForm(!showForm);
 
 	const handleSubmit = e => {
 		e.preventDefault();
 		const displayName = username;
 		signup(email, password, displayName);
+	};
+
+	const passwordConfirm = (e, initialPassword, password) => {
+		e.preventDefault();
+		if (initialPassword !== password) {
+			throw new Error("Passwords do not match");
+			setInitialPassword("");
+			setPassword("");
+		} else {
+			setPassword(e.target.value);
+		}
 	};
 
 	const Overlay = styled.div`
@@ -80,12 +89,13 @@ export default function Signup() {
 	}
 	`;
 
+	const Redirect = styled.p``;
+
+	const Error = styled.p``;
+
 	return (
 		<>
-			<Overlay
-				id="signup-overlay"
-				className="hidden"
-				onClick={() => Toggle}></Overlay>
+			<Overlay id="signup-overlay" className="hidden"></Overlay>
 			<Form onSubmit={handleSubmit} id="signup-form" className="hidden">
 				<h2>Sign Up for Your Account!</h2>
 				<Label>
@@ -109,19 +119,28 @@ export default function Signup() {
 					<Span>Password:</Span>
 					<Input
 						type="password"
-						onChange={e => setPassword(e.target.value)}
+						onChange={e => setInitialPassword(e.target.value)}
+						value={initialPassword}
+					/>
+				</Label>
+				<Label>
+					<Span>Confirm Password:</Span>
+					<Input
+						type="password"
+						onChange={passwordConfirm(e, initialPassword, password)}
 						value={password}
 					/>
 				</Label>
 				{!isPending && <Btn>Sign Up!</Btn>}
 				{isPending && <Btn disabled>Loading...</Btn>}
 
-				<p className={s.redirect}>
+				<Redirect>
 					Already have an account? <Link href="@/login">Login Here</Link>
-				</p>
+				</Redirect>
 
-				{error && <p>{error}</p>}
-			</Form>
+				{error && <Error>{error}</Error>}
+			</Form>{" "}
+			&&
 		</>
 	);
 }

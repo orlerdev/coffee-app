@@ -1,12 +1,19 @@
-import s from "./coffeeCard.module.scss";
+import styled from "styled-components";
 
-export default function CoffeeCard() {
+const Card = styled.div``;
+const FaveIcon = styled.div``;
+const CardWrap = styled.div``;
+
+export default function CoffeeCard({ coffees }) {
 	return (
-		<div className={s.cardContainer}>
-			<div className={s.cardHeart}></div>
-			<div className={s.cardWrap}></div>
-			<div className={s.cardWrap}></div>
-			<div className={s.cardWrap}></div>
-		</div>
+		<>
+			<Card>
+				<FaveIcon></FaveIcon>
+				<CardWrap>data.brand</CardWrap>
+				<CardWrap>data.name</CardWrap>
+				<CardWrap>data.roast</CardWrap>
+				<CardWrap>data.type</CardWrap>
+			</Card>
+		</>
 	);
 }
