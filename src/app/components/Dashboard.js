@@ -1,6 +1,6 @@
-"use client";
-import s from "@/dashboard/dashboard.module.scss";
-import styled from "styled-components";
+"use client"
+import s from "@/dashboard/dashboard.module.scss"
+import styled from "styled-components"
 
 export default function Dashboard() {
 	return (
@@ -34,5 +34,5 @@ export default function Dashboard() {
 				<h2 className={s.faveTitle}>Favorites</h2>
 			</div>
 		</div>
-	);
+	)
 }

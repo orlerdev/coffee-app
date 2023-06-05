@@ -1,5 +1,5 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useCallback, useState } from "react"
+import styled from "styled-components"
 
 const Overlay = styled.div`
 	position: absolute;
@@ -8,31 +8,31 @@ const Overlay = styled.div`
 	height: 100vh;
 	width: 100vw;
 	background: rgba(0, 0, 0, 0.8);
-	z-index: 2;
-`;
+	z-index: 1;
+`
 
 const Form = styled.form`
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 3;
+	z-index: 2;
 	max-width: 360px;
 	margin: 60px auto;
 	padding: 20px;
-`;
+`
 
-const Title = styled.h2``;
+const Title = styled.h2``
 
 const Label = styled.label`
 	display: block;
 	margin: 30px auto;
-`;
+`
 
 const Span = styled.span`
 	display: block;
 	margin-bottom: 6px;
-`;
+`
 
 const Input = styled.input`
 	padding: 8px 6px;
@@ -43,7 +43,7 @@ const Input = styled.input`
 	&:focus {
 		box-shadow: inset rgba(18, 169, 199, 0.8);
 	}
-`;
+`
 
 const Btn = styled.button`
 	background: none;
@@ -60,41 +60,46 @@ const Btn = styled.button`
 		background: #1f9751;
 		color: #fff;
 	}
-	`;
+	`
 
-export default function Login() {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+export default function Login({ loginModalOpen, handleLoginModal }) {
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
 
 	const handleSubmit = e => {
-		e.preventDefault();
-	};
+		e.preventDefault()
+	}
 
 	return (
-		<div>
-			<Overlay></Overlay>
-			<Form onSubmit={handleSubmit}>
-				<Title>Login</Title>
-				<Label>
-					<Span>Email:</Span>
-					<Input
-						required
-						type="email"
-						onChange={e => setEmail(e.target.value)}
-						value={email}
-					/>
-				</Label>
-				<Label>
-					<Span>Password:</Span>
-					<Input
-						required
-						type="password"
-						onChange={e => setPassword(e.target.value)}
-						value={password}
-					/>
-				</Label>
-				<Btn>Login</Btn>
-			</Form>
-		</div>
-	);
+		<>
+			{loginModalOpen && (
+				<div>
+					<Overlay onClick={handleLoginModal}></Overlay>
+					<Form onSubmit={handleSubmit}>
+						<Title>Login</Title>
+						<Label>
+							<Span>Email:</Span>
+							<Input
+								required
+								type="email"
+								onChange={e => setEmail(e.target.value)}
+								value={email}
+							/>
+						</Label>
+						<Label>
+							<Span>Password:</Span>
+							<Input
+								required
+								type="password"
+								onChange={e => setPassword(e.target.value)}
+								value={password}
+							/>
+						</Label>
+						<Btn type="submit">Login</Btn>
+						<Btn onClick={handleLoginModal}>Cancel</Btn>
+					</Form>
+				</div>
+			)}
+		</>
+	)
 }

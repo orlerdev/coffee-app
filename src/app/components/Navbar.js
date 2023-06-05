@@ -1,13 +1,15 @@
-"use client";
-import { useState } from "react";
-import { useLogout } from "@/hooks/useLogout";
-import Link from "next/link";
-import Image from "next/image";
-import s from "./navbar.module.scss";
+"use client"
+import { useState, useCallback } from "react"
+import { useLogout } from "@/hooks/useLogout"
+import Link from "next/link"
+import Image from "next/image"
+import s from "./navbar.module.scss"
 
-export default function Navbar() {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+export default function Navbar({ openLoginModal }) {
+	const [isLoggedIn, setIsLoggedIn] = useState(false)
+	const openLoginModalHandler = useCallback(() => {
+		openLoginModal()
+	}, [openLoginModal])
 	return (
 		<nav className={s.navbar}>
 			{/* if logged in redirect to profile */}
@@ -27,12 +29,15 @@ export default function Navbar() {
 
 			<ul className={s.navUL}>
 				<li>
-					<Link href="/login">Login</Link>
+					{/* <Link href="/login">Login</Link> */}
+					<button onClick={openLoginModalHandler} className={s.btn}>
+						Login
+					</button>
 				</li>
 				{/* <Link href="/signup">Signup</Link> */}
 				<button className={s.btn}>Signup</button>
 				<button className={s.btn}>Logout</button>
 			</ul>
 		</nav>
-	);
+	)
 }

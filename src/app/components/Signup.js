@@ -1,33 +1,33 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { useSignup } from "@/hooks/useSignup";
-import Link from "next/link";
-import styled from "styled-components";
+import { useState } from "react"
+import { useSignup } from "@/hooks/useSignup"
+import Link from "next/link"
+import styled from "styled-components"
 
 export default function Signup() {
-	const [username, setUsername] = useState("");
-	const [email, setEmail] = useState("");
-	const [initialPassword, setInitialPassword] = useState("");
-	const [password, setPassword] = useState("");
-	const { error, isPending, signup } = useSignup();
+	const [username, setUsername] = useState("")
+	const [email, setEmail] = useState("")
+	const [initialPassword, setInitialPassword] = useState("")
+	const [password, setPassword] = useState("")
+	const { error, isPending, signup } = useSignup()
 
 	const handleSubmit = e => {
-		e.preventDefault();
-		const displayName = username;
-		signup(email, password, displayName);
-	};
+		e.preventDefault()
+		const displayName = username
+		signup(email, password, displayName)
+	}
 
 	const passwordConfirm = (e, initialPassword, password) => {
-		e.preventDefault();
+		e.preventDefault()
 		if (initialPassword !== password) {
-			throw new Error("Passwords do not match");
-			setInitialPassword("");
-			setPassword("");
+			throw new Error("Passwords do not match")
+			setInitialPassword("")
+			setPassword("")
 		} else {
-			setPassword(e.target.value);
+			setPassword(e.target.value)
 		}
-	};
+	}
 
 	const Overlay = styled.div`
 		position: absolute;
@@ -37,7 +37,7 @@ export default function Signup() {
 		width: 100vw;
 		background: rgba(0, 0, 0, 0.8);
 		z-index: 2;
-	`;
+	`
 
 	const Form = styled.form`
 		position: absolute;
@@ -48,17 +48,17 @@ export default function Signup() {
 		max-width: 360px;
 		margin: 60px auto;
 		padding: 20px;
-	`;
+	`
 
 	const Label = styled.label`
 		display: block;
 		margin: 30px auto;
-	`;
+	`
 
 	const Span = styled.span`
 		display: block;
 		margin-bottom: 6px;
-	`;
+	`
 
 	const Input = styled.input`
 		padding: 8px 6px;
@@ -69,7 +69,7 @@ export default function Signup() {
 		&:focus {
 			box-shadow: inset rgba(18, 169, 199, 0.8);
 		}
-	`;
+	`
 
 	const Btn = styled.button`
 	background: none;
@@ -86,11 +86,11 @@ export default function Signup() {
 		background: #1f9751;
 		color: #fff;
 	}
-	`;
+	`
 
-	const Redirect = styled.p``;
+	const Redirect = styled.p``
 
-	const Error = styled.p``;
+	const Error = styled.p``
 
 	return (
 		<>
@@ -141,5 +141,5 @@ export default function Signup() {
 			</Form>{" "}
 			&&
 		</>
-	);
+	)
 }
