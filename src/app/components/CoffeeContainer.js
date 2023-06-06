@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import CoffeeCard from "@/components/CoffeeCard"
 import heartEmpty from "@/image/heart-light.svg"
 import heartFull from "@/image/heart-sharp-solid.svg"
 import heartBreak from "@/image/heart-crack-solid.svg"
