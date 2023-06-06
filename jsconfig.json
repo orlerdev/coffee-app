@@ -6,7 +6,8 @@
 			"@/hooks/*": ["./src/hooks/*"],
 			"@/firebase/*": ["./src/firebase/*"],
 			"@/context/*": ["./src/context/*"],
-			"@/lib/*": ["./src/lib/*"]
+			"@/lib/*": ["./src/lib/*"],
+			"@/image/*": ["./public/images/*"]
 		}
 	}
 }

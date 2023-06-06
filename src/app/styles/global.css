@@ -1,9 +1,13 @@
 :root {
+	--primary: rgba(37, 37, 37, 0.9);
+	--secondary: rgb(241, 241, 241);
+	--tertiary: rgb(211, 227, 235);
+	--cta: rgb(24, 162, 217);
+	--cta-lite: rgb(24, 162, 217, 0.4);
 	--callout-rgb: 238, 240, 241;
 	--callout-border-rgb: 172, 175, 176;
 	--card-rgb: 180, 185, 188;
 	--card-border-rgb: 131, 134, 135;
-	--theme-bg-color: rgba(37, 37, 37, 0.9);
 	--border-color: rgba(194, 194, 194, 0.394);
 	--theme-color: #f9fafb;
 	--inactive-color: rgb(113 119 144 / 78%);
@@ -21,5 +25,5 @@
 }
 
 body {
-	background: var(--theme-bg-color);
+	background: var(--primary);
 }

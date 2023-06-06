@@ -10,12 +10,36 @@ export default function Signup() {
 	const [email, setEmail] = useState("")
 	const [initialPassword, setInitialPassword] = useState("")
 	const [password, setPassword] = useState("")
-	const { error, isPending, signup } = useSignup()
+	const [thumbnail, setThumbnail] = useState(null)
+	const [thumbnailError, setThumbnailError] = useState(null)
+	const { signup, isPending, error } = useSignup()
 
 	const handleSubmit = e => {
 		e.preventDefault()
 		const displayName = username
 		signup(email, password, displayName)
+	}
+
+	const handleFileChange = e => {
+		setThumbnail(null)
+		let selected = e.target.files[0]
+		console.log(selected)
+
+		if (!selected) {
+			setThumbnailError("Please select a file")
+			return
+		}
+		if (!selected.type.includes("image")) {
+			setThumbnailError("Selected file must be an image")
+			return
+		}
+		if (selected.size > 1000000) {
+			setThumbnailError("Image file size must be less than 100kb")
+			return
+		}
+		setThumbnail(null)
+		setThumbnail(selected)
+		console.log("Thumbnail updated")
 	}
 
 	const passwordConfirm = (e, initialPassword, password) => {
@@ -130,6 +154,12 @@ export default function Signup() {
 						value={password}
 					/>
 				</Label>
+				<Label>
+					<Span>Profile Thumbnail:</Span>
+					<Input required type="file" onChange={handleFileChange} />
+					{thumbnailError && <Error>{error}</Error>}
+				</Label>
+
 				{!isPending && <Btn>Sign Up!</Btn>}
 				{isPending && <Btn disabled>Loading...</Btn>}
 

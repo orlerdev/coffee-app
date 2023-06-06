@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react"
+import Image from "next/image"
 import styled from "styled-components"
+import peaceOut from "@/image/hand-peace-light.svg"
 
 const Overlay = styled.div`
 	position: absolute;
@@ -17,16 +19,21 @@ const Form = styled.form`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 2;
-	max-width: 360px;
+	height: 40vh;
+	width: 40vw;
+	min-width: 360px;
 	margin: 60px auto;
+	row-gap: 20px;
+	background: var(--secondary);
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
 `
 
 const Title = styled.h2``
 
 const Label = styled.label`
 	display: block;
-	margin: 30px auto;
 `
 
 const Span = styled.span`
@@ -39,28 +46,65 @@ const Input = styled.input`
 	font-size: 1em;
 	color: #777;
 	width: 100%;
+	background: var(--secondary);
+	outline: 0;
+	border: 0;
+	box-shadow: inset 0 0 4px var(--primary);
+	transition: all ease-in 0.3s;
 
 	&:focus {
-		box-shadow: inset rgba(18, 169, 199, 0.8);
+		background: var(--cta-lite);
 	}
 `
+const ButtonGroup = styled.div`
+	display: flex;
+	justify-content: space-between;
+	column-gap: 5px;
+	margin-top: 20px;
+`
 
-const Btn = styled.button`
-	background: none;
-	border: 2px solid #1f9751;
-	padding: 6px 12px;
-	border-radius: 10px;
-	color: #1f9751;
+const LogBtn = styled.button`
+	border: 1px solid transparent;
+	padding: 8px 6px;
+	border-radius: 1px;
+	color: var(--secondary);
 	font-weight: bold;
 	cursor: pointer;
 	font-size: 1em;
-	transition: all ease-in-out .3s
-	
+	width: 100%;
+	color: var(--secondary);
+	background: var(--cta);
+	transition: all ease-in-out 0.3s;
+
 	&:hover {
-		background: #1f9751;
-		color: #fff;
+		background: none;
+		color: var(--cta);
+		border: 1px solid var(--cta);
 	}
-	`
+`
+const CancelBtn = styled(LogBtn)`
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border: 3px solid var(--cta);
+	background: none;
+	color: var(--cta);
+	height: 30px;
+	width: 30px;
+	padding: 1px;
+
+	&:hover {
+		background: var(--cta-lite);
+		color: var(--secondary);
+	}
+`
+
+const Icon = styled(Image)`
+	height: 100%;
+	width: 100%;
+	object-size: cover;
+	object-position: center;
+`
 
 export default function Login({ loginModalOpen, handleLoginModal }) {
 	const [email, setEmail] = useState("")
@@ -80,6 +124,7 @@ export default function Login({ loginModalOpen, handleLoginModal }) {
 						<Label>
 							<Span>Email:</Span>
 							<Input
+								data-autofocus
 								required
 								type="email"
 								onChange={e => setEmail(e.target.value)}
@@ -95,8 +140,12 @@ export default function Login({ loginModalOpen, handleLoginModal }) {
 								value={password}
 							/>
 						</Label>
-						<Btn type="submit">Login</Btn>
-						<Btn onClick={handleLoginModal}>Cancel</Btn>
+						<ButtonGroup>
+							<LogBtn type="submit">Login</LogBtn>
+							<CancelBtn onClick={handleLoginModal}>
+								<Icon src={peaceOut} alt="close modal icon" />
+							</CancelBtn>
+						</ButtonGroup>
 					</Form>
 				</div>
 			)}

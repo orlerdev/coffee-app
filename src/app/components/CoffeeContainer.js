@@ -1,5 +1,10 @@
 "use client"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useState } from "react"
+import heartEmpty from "@/image/heart-light.svg"
+import heartFull from "@/image/heart-sharp-solid.svg"
+import heartBreak from "@/image/heart-crack-solid.svg"
+import Image from "next/image"
+
 import styled from "styled-components"
 const Coffees = styled.div`
 	display: flex;
@@ -33,14 +38,26 @@ const Card = styled.div`
 	background-position: center;
 	background-repeat: no-repeat;
 `
-const FaveIcon = styled.div`
+const IconWrap = styled.div`
 	position: absolute;
 	top: 10px;
 	right: 10px;
-	height: 20px;
-	width: 20px;
-	background: indianred;
+	height: 30px;
+	width: 30px;
+	padding: 1px;
 `
+const Icon = styled(Image)`
+	height: 100%;
+	width: 100%;
+	object-size: cover;
+	object-position: center;
+	color: #000;
+
+	&:hover {
+		cursor: pointer;
+	}
+`
+
 const CardWrap = styled.div`
 	display: flex;
 	width: 100%;
@@ -62,11 +79,31 @@ const CardWrapItem = styled.p`
 `
 
 export default function CoffeeContainer({ coffees }) {
+	const [unFavorite, setUnfavorite] = useState(null)
+	const [full, setFull] = useState(null)
+	const [empty, setEmpty] = useState(null)
+
+	const mouseEnter = () => {
+		setFull(!full)
+		setEmpty(!empty)
+	}
+
+	const mouseLeave = () => {
+		setFull(!full)
+		setEmpty(!empty)
+	}
+
 	return (
 		<Coffees>
 			{coffees.map(coffee => (
 				<Card key={coffee.id}>
-					<FaveIcon></FaveIcon>
+					<IconWrap>
+						<Icon
+							src={heartEmpty}
+							alt="favorite icon"
+							style={{ color: "#18a2d9" }}
+						/>
+					</IconWrap>
 					<CardItem>{coffee.brand}</CardItem>
 					<CardItem>{coffee.name}</CardItem>
 					<CardWrap>

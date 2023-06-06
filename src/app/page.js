@@ -6,8 +6,8 @@ import CoffeeContainer from "@/components/CoffeeContainer"
 import CoffeeForm from "@/components/CoffeeForm"
 import LoginForm from "@/components/LoginForm"
 import { useCollection } from "@/hooks/useCollection"
-import "@/styles/globals.css"
-import "@/styles/reset.css"
+// import "@/styles/reset.css"
+// import "@/styles/global.css"
 // import "@/styles/layout.css"
 
 const PageWrap = styled.div`
