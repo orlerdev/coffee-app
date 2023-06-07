@@ -80,10 +80,6 @@ const CardWrapItem = styled.p`
 `
 
 export default function CoffeeContainer({ coffees }) {
-	const [unFavorite, setUnfavorite] = useState(null)
-	const [full, setFull] = useState(null)
-	const [empty, setEmpty] = useState(null)
-
 	const mouseEnter = () => {
 		setFull(!full)
 		setEmpty(!empty)
@@ -97,21 +93,7 @@ export default function CoffeeContainer({ coffees }) {
 	return (
 		<Coffees>
 			{coffees.map(coffee => (
-				<Card key={coffee.id}>
-					<IconWrap>
-						<Icon
-							src={heartEmpty}
-							alt="favorite icon"
-							style={{ color: "#18a2d9" }}
-						/>
-					</IconWrap>
-					<CardItem>{coffee.brand}</CardItem>
-					<CardItem>{coffee.name}</CardItem>
-					<CardWrap>
-						<CardWrapItem>{coffee.roast}</CardWrapItem>
-						<CardWrapItem>{coffee.style}</CardWrapItem>
-					</CardWrap>
-				</Card>
+				<Card key={coffee.id} />
 			))}
 		</Coffees>
 	)

@@ -26,7 +26,7 @@ const Card = styled.div`
 	background-position: center;
 	background-repeat: no-repeat;
 `
-const FaveIcon = styled(Image)`
+const Icon = styled(Image)`
 	height: 100%;
 	width: 100%;
 	object-size: cover;
@@ -37,6 +37,8 @@ const FaveIcon = styled(Image)`
 		cursor: pointer;
 	}
 `
+const IconsWrap = styled.div``
+
 const TrashIcon = styled(Image)``
 
 const CardItem = styled.p`
@@ -50,46 +52,40 @@ const CardItem = styled.p`
 	}
 `
 
-export default function CoffeeCard({ key, coffees }) {
+export default function CoffeeCard({ idKey, coffees }) {
+	const {
+		brand: coffeeBrand,
+		name: coffeeName,
+		roast: coffeeRoast,
+		type: coffeeType
+	} = coffees
 
+	const [src, setSrc] = useState({ heartEmpty })
+	const [isFavorite, setIsFavorite] = useState(false)
 
-
-
-
-	const { brand, name, roast, type } = coffees
-	const [empty, setEmpty] = useState(null)
-	const [full, setFull] = useState(null)
-	const [heartbreak, setHeartbreak] = useState(null)
-	const [source, setSource] = useState({ heartEmpty })
-	let iconResult =	
-{
-  'case1': 'Result for case 1',
-  'case2': 'Result for case 2',
-  'case3': 'Result for case 3'
-}['case2']
-
-
-	if ()
+	const handleFavoriteClick = () => {
+		setSrc({ heartFull })
+		setIsFavorite(!isFavorite)
+	}
 
 	return (
 		<>
-			<Card key={key}>
-				<FaveIcon>
-					{empty && (
-						<Image
-							src={heartEmpty}
-							alt="Empty favorite icon"
-							style={{ color: "#18a2d9" }}
-						/>
-					)}
-				</FaveIcon>
-				<TrashIcon></TrashIcon>
-				<CardItem>{brand}</CardItem>
-				<CardItem>{name}</CardItem>
-				<CardItem>{roast}</CardItem>
-				<CardItem>{type}</CardItem>
+			<Card key={idKey}>
+				<IconsWrap
+					onClick={handleFavoriteClick}
+					onMouseEnter={() => {
+						isFavorite ? setSrc({ heartBreak }) : setSrc({ heartFull })
+					}}
+					onMouseLeave={() => {
+						isFavorite ? setSrc({ heartFull }) : setSrc({ heartEmpty })
+					}}>
+					<Icon src={src} alt="Favorite Icon" />
+				</IconsWrap>
+				<CardItem>{coffeeBrand}</CardItem>
+				<CardItem>{coffeeName}</CardItem>
+				<CardItem>{coffeeRoast}</CardItem>
+				<CardItem>{coffeeType}</CardItem>
 			</Card>
 		</>
 	)
 }
-
