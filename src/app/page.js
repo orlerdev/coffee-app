@@ -6,9 +6,6 @@ import CoffeeContainer from "@/components/CoffeeContainer"
 import CoffeeForm from "@/components/CoffeeForm"
 import LoginForm from "@/components/LoginForm"
 import { useCollection } from "@/hooks/useCollection"
-// import "@/styles/reset.css"
-// import "@/styles/global.css"
-// import "@/styles/layout.css"
 
 const PageWrap = styled.div`
 	min-height: 100vh;
@@ -47,7 +44,6 @@ export default function Home() {
 	const { documents: coffees } = useCollection("coffees")
 	const [loginModalOpen, setLoginModalOpen] = useState(false)
 	const handleLoginModalToggle = () => {
-		console.log("fired handleLoginModalToggle")
 		setLoginModalOpen(!loginModalOpen)
 	}
 	return (
@@ -62,7 +58,6 @@ export default function Home() {
 								handleLoginModal={handleLoginModalToggle}
 							/>
 							{coffees && <CoffeeContainer coffees={coffees} />}
-							{/* <CoffeeForm /> */}
 						</Column>
 					</Row>
 				</Container>

@@ -17,6 +17,5 @@ export const useCollection = c => {
 		})
 		return () => unsub()
 	}, [c])
-	console.log(documents)
 	return { documents }
 }

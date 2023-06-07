@@ -31,15 +31,12 @@ const Icon = styled(Image)`
 	width: 100%;
 	object-size: cover;
 	object-position: center;
-	color: #000;
 
 	&:hover {
 		cursor: pointer;
 	}
 `
 const IconsWrap = styled.div``
-
-const TrashIcon = styled(Image)``
 
 const CardItem = styled.p`
 	text-transform: capitalize;
@@ -52,35 +49,38 @@ const CardItem = styled.p`
 	}
 `
 
-export default function CoffeeCard({ idKey, coffees }) {
+export default function CoffeeCard({ coffee }) {
 	const {
 		brand: coffeeBrand,
 		name: coffeeName,
 		roast: coffeeRoast,
 		type: coffeeType
-	} = coffees
-
-	const [src, setSrc] = useState({ heartEmpty })
+	} = coffee
 	const [isFavorite, setIsFavorite] = useState(false)
 
+	const key = `${isFavorite ? "favorite" : "notFavorite"}`
+
+	const icons = {
+		favorite: <Icon src={heartFull} />,
+		notFavorite: <Icon src={heartEmpty} />
+	}
+
 	const handleFavoriteClick = () => {
-		setSrc({ heartFull })
 		setIsFavorite(!isFavorite)
+	}
+
+	const mouseEnter = () => {
+		onmouseenter = () => {}
+	}
+
+	const mouseLeve = () => {
+		onmouseleave = () => {}
 	}
 
 	return (
 		<>
-			<Card key={idKey}>
-				<IconsWrap
-					onClick={handleFavoriteClick}
-					onMouseEnter={() => {
-						isFavorite ? setSrc({ heartBreak }) : setSrc({ heartFull })
-					}}
-					onMouseLeave={() => {
-						isFavorite ? setSrc({ heartFull }) : setSrc({ heartEmpty })
-					}}>
-					<Icon src={src} alt="Favorite Icon" />
-				</IconsWrap>
+			<Card>
+				<IconsWrap>{icons[key]}</IconsWrap>
 				<CardItem>{coffeeBrand}</CardItem>
 				<CardItem>{coffeeName}</CardItem>
 				<CardItem>{coffeeRoast}</CardItem>
