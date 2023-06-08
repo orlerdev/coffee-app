@@ -13,17 +13,6 @@ const Coffees = styled.div`
 	padding: 20px;
 	gap: 20px;
 `
-const IconWrap = styled.div`
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	height: 30px;
-	width: 30px;
-	padding: 1px;
-`
-
-const Icon = styled(Image)``
-
 
 
 export default function CoffeeContainer({ coffees }) {

@@ -32,7 +32,7 @@ const Avatar = styled.div`
 	border: 3px solid #fff;
 	border-radius: 50%;
 	overflow: hidden;
-	background: url("/public/user-pic.jpg");
+	background: url("/images/user-pic.jpg");
 	background-size: cover;
 	background-position: top;
 	background-repeat: no-repeat;
